@@ -2,7 +2,7 @@
 
 ## About
 このプロジェクトはPlayAbleAPIやCinemaChineなどの便利なUnityの機能をハンズオンを交えながら知ってもらう目的で、本学サークルでの講座で使用したものです。<br>
-講座資料は[ここ](https://drive.google.com/open?id=1F6HMzf9D8s40w5k8OtP2HhUopDllgm2d)。
+講座資料は[ここ](https://drive.google.com/open?id=1Wz4Qv3w78ktWGR_23kqCNLOFkVCcswgO)。
 資料を見ながら進めていけば0から完成するようになっています。
 
 ## Attention
