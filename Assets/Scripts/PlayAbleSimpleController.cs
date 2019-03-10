@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
@@ -33,26 +33,18 @@ public class PlayAbleSimpleController : MonoBehaviour{
 	private void Awake(){
 		graph = PlayableGraph.Create ();	
 		var anim = GetComponent<Animator>();
-		var anim_controller = anim.runtimeAnimatorController as AnimatorController;
-
+		
+		var defo=new List<AnimationClip>();
 		//全レイヤーの初期アニメを取得し、デフォルトアニメとしてコンバータにセット
-		var counter = 0;
-		if (anim_controller != null){
-			foreach (var layer in anim_controller.layers){
-				var temp = anim.GetCurrentAnimatorStateInfo(counter);
-				foreach (var item in layer.stateMachine.states){
-					var clip = item.state.motion as AnimationClip;
-					if (Animator.StringToHash(anim.GetLayerName(counter) + "." + clip.name) == temp.fullPathHash){
-						//Debug.Log("layer number-"+counter+"- is defoult anim = "+ clip);
-						converters.Add(new Converter(graph,clip));
-					}
-				}
-				counter++;
-			}
+		foreach (var i in Enumerable.Range(0,anim.layerCount)){
+			var temp = anim.GetCurrentAnimatorClipInfo(i)[0].clip;
+			converters.Add(new Converter(graph,temp));
+			defo.Add(temp);
+			Debug.Log("Layer num "+i+",defoult anim "+temp.name);
 		}
 
 		//LayerMask情報をコンバータにセット
-		layerMixer = AnimationLayerMixerPlayable.Create(graph, anim_controller.layers.Length);
+		layerMixer = AnimationLayerMixerPlayable.Create(graph, anim.layerCount);
 		foreach (var item in maskBoxs){
 			layerMixer.SetLayerMaskFromAvatarMask(item.numberToMask,item.layerMask );	
 		}
