@@ -5,6 +5,8 @@
 講座資料は[ここ](https://drive.google.com/open?id=1Wz4Qv3w78ktWGR_23kqCNLOFkVCcswgO)。
 資料を見ながら進めていけば0から完成するようになっています。
 
+PS.スライド内の短縮URLが死んでいたので直リンク(https://drive.google.com/open?id=1r4qVOvWVXl23qUQl49qxtO3SK8hVILy5)
+
 ## Attention
 完成したプロジェクトを配布するあたって、Assetの二次配布が行えないため、CinemaChineは各自でAssetStoreからインポートしてください
 
